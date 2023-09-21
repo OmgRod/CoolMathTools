@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
     res.render('index', { pageTitle: 'Home' });
 });
 
+app.get('/tools', (req, res) => {
+    res.render('tools', { pageTitle: 'Tools' });
+});
+
 // Define a route for tools
 app.get('/tools/calculator', (req, res) => {
     res.render('tools/calculator', { pageTitle: 'Calculator Tool' });
