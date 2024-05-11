@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../defaults/head', { pageTitle: 'Arithmetic Calculator' }) %>
+    <body>
+        <link rel="stylesheet" href="/styles.css"/>
+        <link rel="stylesheet" href="/dark-mode.css"/> <!-- New dark mode CSS file -->
+        <%- include('../defaults/navbar') %>
+        <main>
+            <style>
+                /* Styles for the calculator */
+                .calculator {
+                    width: 400px;
+                    margin: 50px auto;
+                    border: 2px solid #3498db;
+                    border-radius: 10px;
+                    background-color: #fff;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    touch-action: none; /* Disable pinch zooming */
+                }
+                
+                .display {
+                    margin-bottom: 20px;
+                    text-align: right;
+                    font-size: 24px;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                
+                .button {
+                    width: 80px;
+                    height: 80px;
+                    margin: 10px;
+                    font-size: 24px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    outline: none;
+                    border: 2px solid transparent;
+                    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+                }
+                
+                .button:hover {
+                    background-color: #f2f2f2;
+                }
+                
+                .number {
+                    background-color: #3498db;
+                    color: #fff;
+                }
+                
+                .operation {
+                    background-color: #fff;
+                    color: #3498db;
+                }
+                
+                /* Remove outline from input */
+                input[type="text"] {
+                    outline: none;
+                }
+            </style>
+            
+            <div class="calculator">
+                <!-- Calculator UI layout -->
+                <div class="display">
+                    <input type="text" id="display" readonly>
+                </div>
+                <div class="buttons">
+                    <!-- Number buttons -->
+                    <button class="button number" onclick="appendToDisplay('1')">1</button>
+                    <button class="button number" onclick="appendToDisplay('2')">2</button>
+                    <button class="button number" onclick="appendToDisplay('3')">3</button>
+                    <button class="button number" onclick="appendToDisplay('4')">4</button>
+                    <button class="button number" onclick="appendToDisplay('5')">5</button>
+                    <button class="button number" onclick="appendToDisplay('6')">6</button>
+                    <button class="button number" onclick="appendToDisplay('7')">7</button>
+                    <button class="button number" onclick="appendToDisplay('8')">8</button>
+                    <button class="button number" onclick="appendToDisplay('9')">9</button>
+                    <button class="button number" onclick="appendToDisplay('0')">0</button>
+                    
+                    <!-- Operation buttons -->
+                    <button class="button operation" onclick="performOperation('+')">+</button>
+                    <button class="button operation" onclick="performOperation('-')">-</button>
+                    <button class="button operation" onclick="performOperation('*')">*</button>
+                    <button class="button operation" onclick="performOperation('/')">/</button>
+                    
+                    <!-- Additional buttons -->
+                    <button class="button operation" onclick="calculate()">=</button>
+                    <button class="button operation" onclick="clearDisplay()">C</button>
+                </div>
+            </div>
+            
+            <script>
+                // JavaScript for the calculator
+                function appendToDisplay(value) {
+                    document.getElementById('display').value += value;
+                }
+                
+                function performOperation(operation) {
+                    document.getElementById('display').value += operation;
+                }
+                
+                function calculate() {
+                    var expression = document.getElementById('display').value;
+                    var result = eval(expression);
+                    document.getElementById('display').value = result;
+                }
+                
+                function clearDisplay() {
+                    document.getElementById('display').value = '';
+                }
+            </script>
+        </main>
+    </body>
+</html>

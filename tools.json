@@ -1,0 +1,11 @@
+[
+    {
+      "toolName": "calculator.ejs",
+      "toolDisplayName": "Arithmetic Calculator",
+      "icons": ["calculator.svg", "beta.svg"],
+      "severeErrors": false,
+      "description": "<p>Its the average calculator bro. nothing else to say</p>",
+      "thumbnail": "calculator.svg"
+    }
+  ]
+  
